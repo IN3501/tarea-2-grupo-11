@@ -16,7 +16,9 @@ def inicio(request):
 
 def contacto(request):
 	if request.method == 'POST':
-		return render(request, 'contacto.html', {'success': 1})
+		if request.POST.get('nombre'):
+			nombre= request.POST.get('nombre')
+			return render(request, 'contacto.html', {'success': 1, 'nombre':nombre})
 	
 
 	return render(request, 'contacto.html')
